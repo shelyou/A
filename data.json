@@ -1,68 +1,169 @@
 {
-  "kue": [
+  "categories": [
     {
-      "no": 1,
-      "nama_barang": "Monitor",
-      "kode_gudang": "KD001",
-      "kode_toko": "KD-TK001",
-      "harga_1_dus": 500000,
-      "harga_1000g": 100000,
-      "harga_500g": 50000,
-      "harga_250g": 25000,
-      "stok_gudang": 50,
-      "stok_toko": 20,
-      "tanggal_masuk": "2025-12-01",
-      "tanggal_keluar": "2025-12-02"
+      "name": "Kue",
+      "items": [
+        {
+          "subtitle": "Tepung",
+          "products": [
+            {
+              "no": 1,
+              "namaBarang": "Monitor",
+              "kodeGudang": "KD001",
+              "kodeToko": "KD-TK001",
+              "hargaDus": 500000,
+              "harga1000Gram": 100000,
+              "harga500Gram": 50000,
+              "harga250Gram": 25000,
+              "stokGudang": 50,
+              "stokToko": 20,
+              "tanggalMasuk": "2025-12-01",
+              "tanggalKeluar": "2025-12-02"
+            },
+            {
+              "no": 2,
+              "namaBarang": "Keyboard",
+              "kodeGudang": "KD002",
+              "kodeToko": "KD-TK002",
+              "hargaDus": 400000,
+              "harga1000Gram": 80000,
+              "harga500Gram": 40000,
+              "harga250Gram": 20000,
+              "stokGudang": 30,
+              "stokToko": 10,
+              "tanggalMasuk": "2025-12-01",
+              "tanggalKeluar": "2025-12-02"
+            },
+            {
+              "no": 3,
+              "namaBarang": "Mouse",
+              "kodeGudang": "KD003",
+              "kodeToko": "KD-TK003",
+              "hargaDus": 300000,
+              "harga1000Gram": 60000,
+              "harga500Gram": 30000,
+              "harga250Gram": 15000,
+              "stokGudang": 40,
+              "stokToko": 15,
+              "tanggalMasuk": "2025-12-01",
+              "tanggalKeluar": "2025-12-02"
+            }
+          ]
+        },
+        {
+          "subtitle": "Gula",
+          "products": [
+            {
+              "no": 1,
+              "namaBarang": "Tablet",
+              "kodeGudang": "KD004",
+              "kodeToko": "KD-TK004",
+              "hargaDus": 1000000,
+              "harga1000Gram": 200000,
+              "harga500Gram": 100000,
+              "harga250Gram": 50000,
+              "stokGudang": 60,
+              "stokToko": 25,
+              "tanggalMasuk": "2025-12-01",
+              "tanggalKeluar": "2025-12-02"
+            },
+            {
+              "no": 2,
+              "namaBarang": "Speaker",
+              "kodeGudang": "KD005",
+              "kodeToko": "KD-TK005",
+              "hargaDus": 750000,
+              "harga1000Gram": 150000,
+              "harga500Gram": 75000,
+              "harga250Gram": 37500,
+              "stokGudang": 80,
+              "stokToko": 40,
+              "tanggalMasuk": "2025-12-01",
+              "tanggalKeluar": "2025-12-02"
+            },
+            {
+              "no": 3,
+              "namaBarang": "Printer",
+              "kodeGudang": "KD006",
+              "kodeToko": "KD-TK006",
+              "hargaDus": 1500000,
+              "harga1000Gram": 300000,
+              "harga500Gram": 150000,
+              "harga250Gram": 75000,
+              "stokGudang": 120,
+              "stokToko": 60,
+              "tanggalMasuk": "2025-12-01",
+              "tanggalKeluar": "2025-12-02"
+            }
+          ]
+        }
+      ]
     },
     {
-      "no": 2,
-      "nama_barang": "Keyboard",
-      "kode_gudang": "KD002",
-      "kode_toko": "KD-TK002",
-      "harga_1_dus": 400000,
-      "harga_1000g": 80000,
-      "harga_500g": 40000,
-      "harga_250g": 20000,
-      "stok_gudang": 30,
-      "stok_toko": 10,
-      "tanggal_masuk": "2025-12-01",
-      "tanggal_keluar": "2025-12-02"
-    }
-  ],
-  "plastik": [
-    {
-      "no": 1,
-      "ukuran": "50x40x30 cm",
-      "kode_gudang": "KD007",
-      "kode_toko": "KD-TK007",
-      "harga_1_dus": 600000,
-      "harga_1_pak": 100000,
-      "harga_1_pis": 50000,
-      "harga_1_ons": 25000,
-      "harga_1000g": 120000,
-      "harga_500g": 60000,
-      "harga_250g": 30000,
-      "stok_gudang": 70,
-      "stok_toko": 35,
-      "tanggal_masuk": "2025-12-01",
-      "tanggal_keluar": "2025-12-02"
-    },
-    {
-      "no": 2,
-      "ukuran": "60x50x40 cm",
-      "kode_gudang": "KD008",
-      "kode_toko": "KD-TK008",
-      "harga_1_dus": 800000,
-      "harga_1_pak": 133000,
-      "harga_1_pis": 66500,
-      "harga_1_ons": 33250,
-      "harga_1000g": 160000,
-      "harga_500g": 80000,
-      "harga_250g": 40000,
-      "stok_gudang": 50,
-      "stok_toko": 25,
-      "tanggal_masuk": "2025-12-01",
-      "tanggal_keluar": "2025-12-02"
+      "name": "Plastik",
+      "items": [
+        {
+          "subtitle": "Plastik PP",
+          "products": [
+            {
+              "no": 1,
+              "ukuran": "50x40x30 cm",
+              "kodeGudang": "KD007",
+              "kodeToko": "KD-TK007",
+              "hargaDus": 600000,
+              "hargaPak": 100000,
+              "hargaPis": 50000,
+              "hargaOns": 25000,
+              "harga1000Gram": 120000,
+              "harga500Gram": 60000,
+              "harga250Gram": 30000,
+              "stokGudang": 70,
+              "stokToko": 35,
+              "tanggalMasuk": "2025-12-01",
+              "tanggalKeluar": "2025-12-02"
+            },
+            {
+              "no": 2,
+              "ukuran": "60x50x40 cm",
+              "kodeGudang": "KD008",
+              "kodeToko": "KD-TK008",
+              "hargaDus": 800000,
+              "hargaPak": 133000,
+              "hargaPis": 66500,
+              "hargaOns": 33250,
+              "harga1000Gram": 160000,
+              "harga500Gram": 80000,
+              "harga250Gram": 40000,
+              "stokGudang": 50,
+              "stokToko": 25,
+              "tanggalMasuk": "2025-12-01",
+              "tanggalKeluar": "2025-12-02"
+            }
+          ]
+        },
+        {
+          "subtitle": "Plastik HD",
+          "products": [
+            {
+              "no": 1,
+              "ukuran": "100x80x60 cm",
+              "kodeGudang": "KD010",
+              "kodeToko": "KD-TK010",
+              "hargaDus": 900000,
+              "hargaPak": 150000,
+              "hargaPis": 75000,
+              "hargaOns": 37500,
+              "harga1000Gram": 180000,
+              "harga500Gram": 90000,
+              "harga250Gram": 45000,
+              "stokGudang": 90,
+              "stokToko": 45,
+              "tanggalMasuk": "2025-12-01",
+              "tanggalKeluar": "2025-12-02"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
