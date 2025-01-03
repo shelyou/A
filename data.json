@@ -1,0 +1,68 @@
+{
+  "kue": [
+    {
+      "no": 1,
+      "nama_barang": "Monitor",
+      "kode_gudang": "KD001",
+      "kode_toko": "KD-TK001",
+      "harga_1_dus": 500000,
+      "harga_1000g": 100000,
+      "harga_500g": 50000,
+      "harga_250g": 25000,
+      "stok_gudang": 50,
+      "stok_toko": 20,
+      "tanggal_masuk": "2025-12-01",
+      "tanggal_keluar": "2025-12-02"
+    },
+    {
+      "no": 2,
+      "nama_barang": "Keyboard",
+      "kode_gudang": "KD002",
+      "kode_toko": "KD-TK002",
+      "harga_1_dus": 400000,
+      "harga_1000g": 80000,
+      "harga_500g": 40000,
+      "harga_250g": 20000,
+      "stok_gudang": 30,
+      "stok_toko": 10,
+      "tanggal_masuk": "2025-12-01",
+      "tanggal_keluar": "2025-12-02"
+    }
+  ],
+  "plastik": [
+    {
+      "no": 1,
+      "ukuran": "50x40x30 cm",
+      "kode_gudang": "KD007",
+      "kode_toko": "KD-TK007",
+      "harga_1_dus": 600000,
+      "harga_1_pak": 100000,
+      "harga_1_pis": 50000,
+      "harga_1_ons": 25000,
+      "harga_1000g": 120000,
+      "harga_500g": 60000,
+      "harga_250g": 30000,
+      "stok_gudang": 70,
+      "stok_toko": 35,
+      "tanggal_masuk": "2025-12-01",
+      "tanggal_keluar": "2025-12-02"
+    },
+    {
+      "no": 2,
+      "ukuran": "60x50x40 cm",
+      "kode_gudang": "KD008",
+      "kode_toko": "KD-TK008",
+      "harga_1_dus": 800000,
+      "harga_1_pak": 133000,
+      "harga_1_pis": 66500,
+      "harga_1_ons": 33250,
+      "harga_1000g": 160000,
+      "harga_500g": 80000,
+      "harga_250g": 40000,
+      "stok_gudang": 50,
+      "stok_toko": 25,
+      "tanggal_masuk": "2025-12-01",
+      "tanggal_keluar": "2025-12-02"
+    }
+  ]
+}
