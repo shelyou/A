@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Barang</title>
-     
+       <link rel="stylesheet" href="daftarbarang.css">
     <style>
         table {
             width: 100%;
@@ -30,6 +30,7 @@
     <h1>Data Barang</h1>
     <div id="table-container"></div>
 
+    <script src="table.js"></script>
     <script>
         // Load JSON data
         fetch('data.json')
@@ -102,7 +103,7 @@
                 });
             })
             .catch(error => console.error('Error loading JSON:', error));
-<script src="table.js"></script>
+
     </script>
 </body>
 </html>
