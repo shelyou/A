@@ -326,34 +326,55 @@
 document.addEventListener("DOMContentLoaded", () => {
     const tableCells = document.querySelectorAll("td");
     const editableColumns = [4, 5, 6, 7, 8, 9, 10, 11]; // Kolom harga, stok, dan tanggal (index mulai dari 0)
+    let logContainer = document.getElementById("logContainer");
 
-    // Load saved values from localStorage
+    // Jika logContainer belum ada, buat elemen baru untuk log
+    if (!logContainer) {
+        logContainer = document.createElement("div");
+        logContainer.id = "logContainer";
+        document.body.appendChild(logContainer);
+    }
+
+    // Memuat nilai yang disimpan dari localStorage
     tableCells.forEach((cell, index) => {
         const savedValue = localStorage.getItem(`cell-${index}`);
         if (savedValue && editableColumns.includes(index % 14)) {
             cell.textContent = savedValue;
+            if (!cell.classList.contains("edited")) {
+                cell.classList.add("edited"); // Menambahkan kelas "edited" jika sudah diubah
+            }
         }
     });
 
+    // Menambahkan event listener untuk klik pada setiap sel yang dapat diedit
     tableCells.forEach((cell, index) => {
         if (editableColumns.includes(index % 14)) {
             cell.addEventListener("click", () => {
                 const currentValue = cell.textContent || "";
                 let inputType = "text";
 
-                // Tentukan input khusus untuk tanggal
+                // Tentukan input jenis tanggal
                 if ([10, 11].includes(index % 14)) {
                     inputType = "date";
                 }
 
+                // Menampilkan prompt untuk meminta input baru
                 const newValue = prompt(
                     `Masukkan nilai baru (${inputType === "date" ? "format YYYY-MM-DD" : "bebas"}):`,
                     currentValue
                 );
 
+                // Jika nilai baru valid, simpan dan beri log serta tanda perubahan
                 if (newValue !== null && newValue.trim() !== "") {
                     cell.textContent = newValue.trim();
                     localStorage.setItem(`cell-${index}`, newValue.trim());
+
+                    // Menandai sel yang diedit dengan kelas "edited"
+                    cell.classList.add("edited");
+
+                    // Log perubahan yang terjadi
+                    const logMessage = `Sel ${index} telah diubah menjadi: ${newValue.trim()}`;
+                    logContainer.innerHTML += `<p>${logMessage}</p>`;
                 }
             });
         }
