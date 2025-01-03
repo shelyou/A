@@ -3,136 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stok</title>
-    <link rel="stylesheet" href="daftarbarang.css">
+    <title>Data Barang</title>
     <style>
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-bottom: 20px;
+            margin: 20px 0;
+            font-size: 16px;
+            text-align: left;
         }
         th, td {
-            border: 1px solid #000;
+            border: 1px solid #ddd;
             padding: 8px;
-            text-align: center;
         }
         th {
-            background-color: #f2f2f2;
-        }
-        .money {
-            font-family: Arial, sans-serif;
-            font-weight: bold;
+            background-color: #f4f4f4;
         }
         .table-subtitle {
-            font-size: 20px;
+            background-color: #e8e8e8;
             font-weight: bold;
-            text-align: center;
-            background-color: #f9f9f9;
-        }
-        .table-subtitle td {
-            border: none;
-        }
-        .edited {
-            background-color: #eaf5e0;
-        }
-        #logContainer {
-            margin-top: 20px;
-            font-size: 14px;
-            font-family: Arial, sans-serif;
-            border: 1px solid #ccc;
-            padding: 10px;
-            background: #f9f9f9;
-        }
-        @media (max-width: 768px) {
-            table {
-                font-size: 13px;
-            }
-            th, td {
-                padding: 7px;
-            }
         }
     </style>
 </head>
 <body>
-    <div class="search-container">
-        <input type="text" id="searchInput" placeholder="Cari barang..." />
-    </div>
-    
-    <h2>Kue</h2>
-    <div class="table-container">
-        <table id="tableKue">
-            <!-- Tabel dan konten sesuai -->
-            <!-- Disesuaikan dengan konten asli -->
-        </table>
-    </div>
-
-    <h2>Plastik</h2>
-    <div class="table-container">
-        <table id="tablePlastik">
-            <!-- Tabel dan konten sesuai -->
-            <!-- Disesuaikan dengan konten asli -->
-        </table>
-    </div>
-
-    <div id="logContainer">
-        <strong>Log Perubahan:</strong>
-    </div>
+    <h1>Data Barang</h1>
+    <div id="table-container"></div>
 
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const tableCells = document.querySelectorAll("td");
-            const editableColumns = [4, 5, 6, 7, 8, 9, 10, 11]; // Kolom editable
-            const logContainer = document.getElementById("logContainer");
+        // Load JSON data
+        fetch('data.json')
+            .then(response => response.json())
+            .then(data => {
+                const tableContainer = document.getElementById('table-container');
 
-            // Muat nilai tersimpan dari localStorage
-            tableCells.forEach((cell, index) => {
-                const savedValue = localStorage.getItem(`cell-${index}`);
-                if (savedValue) {
-                    cell.textContent = savedValue;
-                    cell.classList.add("edited");
-                }
-            });
+                data.categories.forEach(category => {
+                    // Create category title
+                    const categoryTitle = document.createElement('h2');
+                    categoryTitle.textContent = category.name;
+                    tableContainer.appendChild(categoryTitle);
 
-            // Tambahkan event listener untuk klik pada kolom yang dapat diedit
-            tableCells.forEach((cell, index) => {
-                if (editableColumns.includes(index % 14)) {
-                    cell.addEventListener("click", () => {
-                        const currentValue = cell.textContent || "";
-                        let inputType = "text";
+                    // Create table
+                    const table = document.createElement('table');
+                    const thead = document.createElement('thead');
+                    thead.innerHTML = `
+                        <tr>
+                            <th>No</th>
+                            <th>Nama Barang</th>
+                            <th>Kode Gudang</th>
+                            <th>Kode Toko</th>
+                            <th>Harga Dus</th>
+                            <th>Harga 1000g</th>
+                            <th>Harga 500g</th>
+                            <th>Harga 250g</th>
+                            <th>Stok Gudang</th>
+                            <th>Stok Toko</th>
+                            <th>Tanggal Masuk</th>
+                            <th>Tanggal Keluar</th>
+                        </tr>
+                    `;
+                    table.appendChild(thead);
 
-                        // Jika kolom tanggal
-                        if ([10, 11].includes(index % 14)) {
-                            inputType = "date";
-                        }
+                    const tbody = document.createElement('tbody');
 
-                        // Prompt untuk input baru
-                        const newValue = prompt(
-                            `Masukkan nilai baru (${inputType === "date" ? "format YYYY-MM-DD" : "bebas"}):`,
-                            currentValue
-                        );
+                    // Loop through items and products
+                    category.items.forEach(item => {
+                        // Add subtitle row
+                        const subtitleRow = document.createElement('tr');
+                        subtitleRow.classList.add('table-subtitle');
+                        subtitleRow.innerHTML = `
+                            <td colspan="12">${item.subtitle}</td>
+                        `;
+                        tbody.appendChild(subtitleRow);
 
-                        // Validasi input dan simpan ke localStorage
-                        if (newValue !== null && newValue.trim() !== "") {
-                            if (inputType === "date" && !/^\d{4}-\d{2}-\d{2}$/.test(newValue.trim())) {
-                                alert("Masukkan tanggal dengan format YYYY-MM-DD!");
-                                return;
-                            }
-
-                            // Simpan nilai baru
-                            cell.textContent = newValue.trim();
-                            localStorage.setItem(`cell-${index}`, newValue.trim());
-
-                            // Tandai sel dengan kelas "edited"
-                            cell.classList.add("edited");
-
-                            // Tambahkan log perubahan
-                            const logMessage = `Sel pada baris ${Math.floor(index / 14) + 1}, kolom ${index % 14 + 1} diubah menjadi: ${newValue.trim()}`;
-                            logContainer.innerHTML += `<p>${logMessage}</p>`;
-                        }
+                        // Add products rows
+                        item.products.forEach(product => {
+                            const row = document.createElement('tr');
+                            row.innerHTML = `
+                                <td>${product.no}</td>
+                                <td>${product.namaBarang || '-'}</td>
+                                <td>${product.kodeGudang}</td>
+                                <td>${product.kodeToko}</td>
+                                <td>${product.hargaDus || '-'}</td>
+                                <td>${product.harga1000Gram || '-'}</td>
+                                <td>${product.harga500Gram || '-'}</td>
+                                <td>${product.harga250Gram || '-'}</td>
+                                <td>${product.stokGudang}</td>
+                                <td>${product.stokToko}</td>
+                                <td>${product.tanggalMasuk}</td>
+                                <td>${product.tanggalKeluar}</td>
+                            `;
+                            tbody.appendChild(row);
+                        });
                     });
-                }
-            });
-        });
+
+                    table.appendChild(tbody);
+                    tableContainer.appendChild(table);
+                });
+            })
+            .catch(error => console.error('Error loading JSON:', error));
     </script>
 </body>
 </html>
