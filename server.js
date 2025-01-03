@@ -1,34 +1,36 @@
-const http = require("http");
-const fs = require("fs");
-const path = require("path");
+const express = require('express');
+const fs = require('fs');
+const app = express();
+const PORT = 8080;
 
-const server = http.createServer((req, res) => {
-    let filePath = "." + req.url;
-    if (filePath === "./") filePath = "./index.html";
+// Middleware untuk parse JSON body
+app.use(express.json());
+app.use(express.static('public'));
 
-    const extname = path.extname(filePath);
-    let contentType = "text/html";
-
-    switch (extname) {
-        case ".css":
-            contentType = "text/css";
-            break;
-        case ".js":
-            contentType = "text/javascript";
-            break;
-    }
-
-    fs.readFile(filePath, (err, content) => {
+// Endpoint untuk mengambil data (GET)
+app.get('/data', (req, res) => {
+    fs.readFile('data.json', 'utf8', (err, data) => {
         if (err) {
-            res.writeHead(500);
-            res.end(`Server Error: ${err.code}`);
-        } else {
-            res.writeHead(200, { "Content-Type": contentType });
-            res.end(content, "utf-8");
+            return res.status(500).send('Error reading data file');
         }
+        res.json(JSON.parse(data));
     });
 });
 
-server.listen(8080, () => {
-    console.log("Server berjalan di http://localhost:8080");
+// Endpoint untuk menyimpan data (POST)
+app.post('/data', (req, res) => {
+    const newData = req.body;
+
+    // Menyimpan data baru ke file data.json
+    fs.writeFile('data.json', JSON.stringify(newData, null, 2), (err) => {
+        if (err) {
+            return res.status(500).send('Error writing data file');
+        }
+        res.status(200).send('Data updated successfully');
+    });
+});
+
+// Menjalankan server
+app.listen(PORT, () => {
+    console.log(`Server running at http://localhost:${PORT}`);
 });
